@@ -1133,7 +1133,8 @@ fig.update_yaxes(title="Cumulative % of Total Views")
 st.plotly_chart(fig, use_container_width=True)
 
 pct_vids_for_80 = pareto_df[pareto_df["CumViewsPct"]<=80].shape[0] / len(pareto_df) * 100
-st.markdown(f'<div class="insight-card"><div class="insight-num">17</div><div class="insight-title">Views Concentration Risk</div><div class="insight-body">Only <span class="insight-highlight">{pct_vids_for_80:.1f}% of videos</span> account for 80% of total channel views. {"This is a high dependency — if those videos are demonetized or taken down, the channel loses most of its traffic." if pct_vids_for_80 < 15 else "A reasonably distributed viewership — the channel isn\'t overly dependent on a few viral hits."}</div></div>', unsafe_allow_html=True)
+concentration_msg = "This is a high dependency — if those videos are demonetized or taken down, the channel loses most of its traffic." if pct_vids_for_80 < 15 else "A reasonably distributed viewership — the channel is not overly dependent on a few viral hits."
+st.markdown(f'<div class="insight-card"><div class="insight-num">17</div><div class="insight-title">Views Concentration Risk</div><div class="insight-body">Only <span class="insight-highlight">{pct_vids_for_80:.1f}% of videos</span> account for 80% of total channel views. {concentration_msg}</div></div>', unsafe_allow_html=True)
 
 # ══════════════════════════════════════════════════════════════════════════════
 # INSIGHT 18 — DESCRIPTION LENGTH vs PERFORMANCE
